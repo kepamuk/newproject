@@ -1,2 +1,2 @@
-# MEAM Stack
-testing project
+# MEAN Stack
+Testing project

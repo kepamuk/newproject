@@ -2,6 +2,10 @@ const User = require('../models/user');
 
 module.exports = (router) => {
 
+  router.get('/hello', (req, res) => {
+    res.end('Hello World!');
+  });
+
   router.post('/login', (req, res) => {
     User.findOne({username: 'stas'}, function (err, user) {
       let temp = user.comparePassword(req.body.password, user.password);
