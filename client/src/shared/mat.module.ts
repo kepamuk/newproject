@@ -1,6 +1,11 @@
 import {
-  MatButtonModule, MatCheckboxModule, MatToolbarModule, MatDialogModule, MatIconModule,
-  MatFormFieldModule, MatInputModule
+  MatButtonModule,
+  MatCheckboxModule,
+  MatToolbarModule,
+  MatDialogModule,
+  MatIconModule,
+  MatFormFieldModule,
+  MatInputModule
 } from '@angular/material';
 import {NgModule} from '@angular/core';
 

@@ -1,1 +1,41 @@
-sdsds
+<div class="example-container">
+  <form [formGroup]="form"
+        novalidate>
+
+    <mat-form-field class="example-full-width">
+      <input matInput
+             placeholder="Username"
+             name="username"
+             [formControlName]="'username'">
+
+      <mat-error *ngIf="form.controls['username'].invalid">{{ getErrorMessage('username') }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput
+             placeholder="Enter your password"
+             [type]="hide ? 'password' : 'text'"
+             name="password"
+             [formControlName]="'password'">
+      <mat-icon matSuffix
+                (click)="hide = !hide"
+                class="eye">
+        {{hide ? 'visibility' : 'visibility_off'}}
+      </mat-icon>
+      <mat-error *ngIf="form.controls['password'].invalid">{{ getErrorMessage('password') }}</mat-error>
+    </mat-form-field>
+
+    <button mat-fab color="primary"
+            (click)="onSubmit(form)"
+            [disabled]="form.invalid">
+      <mat-icon>done</mat-icon>
+    </button>
+
+    <button mat-fab color="accent"
+            (click)="closeReg()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <!--<p>Form value: {{ form.value | json }}</p>-->
+    <!--<p>Form status: {{ form.status | json }}</p>-->
+  </form>
+</div>

@@ -1,7 +1,6 @@
 <div class="example-container">
   <form [formGroup]="form"
-        novalidate
-        (ngSubmit)="onSubmit(form)">
+        novalidate>
 
     <mat-form-field class="example-full-width">
       <input matInput
@@ -27,7 +26,8 @@
              name="password"
              [formControlName]="'password'">
       <mat-icon matSuffix
-                (click)="hide = !hide">
+                (click)="hide = !hide"
+                class="eye">
         {{hide ? 'visibility' : 'visibility_off'}}
       </mat-icon>
       <mat-error *ngIf="form.controls['password'].invalid">{{ getErrorMessage('password') }}</mat-error>
@@ -46,7 +46,8 @@
              name="duplicate"
              [formControlName]="'duplicate'">
       <mat-icon matSuffix
-                (click)="hide1 = !hide1">
+                (click)="hide1 = !hide1"
+                class="eye">
         {{hide1 ? 'visibility' : 'visibility_off'}}
       </mat-icon>
       <mat-error *ngIf="form.controls['duplicate'].invalid">{{ getErrorMessage('duplicate') }}</mat-error>
@@ -57,12 +58,16 @@
     >Check me!
     </mat-checkbox>
 
-    <button mat-button
-            color="primary"
+    <button mat-fab color="primary"
+            (click)="onSubmit(form)"
             [disabled]="form.invalid">
-      Registration
+      <mat-icon>done</mat-icon>
     </button>
-    <p>Form value: {{ form.value | json }}</p>
-    <p>Form status: {{ form.status | json }}</p>
+    <button mat-fab color="accent"
+            (click)="closeReg()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <!--<p>Form value: {{ form.value | json }}</p>-->
+    <!--<p>Form status: {{ form.status | json }}</p>-->
   </form>
 </div>

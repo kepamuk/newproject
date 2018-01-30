@@ -7,8 +7,8 @@ const bodyParser = require('body-parser');
 
 const user = require('./routes/auth')(router);
 
-// mongoose.connect('mongodb://localhost/myshop');
-mongoose.connect('mongodb://kepamuk:qqq777erqqq@ds119258.mlab.com:19258/myproject');
+mongoose.connect('mongodb://localhost/myshop');
+// mongoose.connect('mongodb://kepamuk:qqq777erqqq@ds119258.mlab.com:19258/myproject');
 
 app.use(cors());
 

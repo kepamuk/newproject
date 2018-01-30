@@ -15,6 +15,7 @@ import {
   LoginComponent,
   LoginDialog
 } from './login/login.component';
+import {UserRoutingModule} from './user-routing.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {
     MaterialModule,
     ReactiveFormsModule,
     PasswordStrengthBarModule,
-    HttpClientModule
+    HttpClientModule,
+    UserRoutingModule
   ],
   exports: [
     UserComponent

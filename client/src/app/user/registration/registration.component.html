@@ -1,3 +1,5 @@
-<button mat-button
-        (click)="openReg()">Registration
-</button>
+<a mat-button
+   (click)="openReg()"
+   [routerLink]="[{outlets: { modal: 'login' } } ]">
+   Registration
+</a>
