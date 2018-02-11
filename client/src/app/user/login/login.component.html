@@ -1,3 +1,44 @@
-<button mat-button
-        (click)="openLogin()">Login
-</button>
+<div class="example-container">
+  <form [formGroup]="form"
+        novalidate
+        class="form">
+
+    <ng-container
+            *ngFor="let field of config;"
+            dynamicField
+            [config]="field"
+            [group]="form">
+    </ng-container>
+
+    <mat-form-field class="example-full-width">
+      <input matInput
+             placeholder="Enter your password"
+             [type]="hide ? 'password' : 'text'"
+             name="password"
+             [formControlName]="'password'">
+      <mat-icon matSuffix
+                (click)="hide = !hide"
+                class="eye">
+        {{hide ? 'visibility' : 'visibility_off'}}
+      </mat-icon>
+      <mat-error *ngIf="form.controls['password'].invalid">{{ getErrorMessage('password') }}</mat-error>
+    </mat-form-field>
+
+    <div class="buttons_auth">
+      <button mat-fab color="primary"
+              (click)="onSubmit(form)"
+              [disabled]="form.invalid">
+        <mat-icon>done</mat-icon>
+      </button>
+
+      <button mat-fab
+              color="accent"
+              type="button"
+              [routerLink]="'/auth/registration'">
+        <mat-icon>people</mat-icon>
+      </button>
+    </div>
+    <!--<p>Form value: {{ form.value | json }}</p>-->
+    <!--<p>Form status: {{ form.status | json }}</p>-->
+  </form>
+</div>

@@ -54,7 +54,6 @@ module.exports = (router) => {
   });
 
   router.get('/checkField', (req, res) => {
-
     let query;
     if (req.query.type === 'username') {
       query = User.findOne({username: req.query.value});

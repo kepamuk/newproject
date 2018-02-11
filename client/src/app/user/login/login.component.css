@@ -1,0 +1,18 @@
+.mat-form-field{
+    display: block;
+}
+.eye{
+    cursor: pointer;
+}
+.example-container{
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.form{
+    width: 300px;
+}
+.buttons_auth{
+    float: right;
+}

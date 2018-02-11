@@ -1,9 +1,9 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
-import {UserService} from '../service/user.service';
+import {Component} from '@angular/core';
+import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import 'rxjs/add/operator/map';
-import {ValidationErrors} from '../validationErrors';
+
+import {UserService} from '../service/user.service';
+import {ValidationErrors} from '../shared/validationErrors';
 
 @Component({
   selector: 'app-registration',
@@ -12,23 +12,6 @@ import {ValidationErrors} from '../validationErrors';
 })
 export class RegistrationComponent {
 
-  constructor(public dialog: MatDialog) {
-    // this.dialog.open(RegDialog);
-  }
-
-  openReg() {
-    this.dialog.open(RegDialog, {
-      width: '300px',
-    });
-  }
-
-}
-
-@Component({
-  templateUrl: 'regDialog.html',
-  styleUrls: ['./regDialog.css']
-})
-export class RegDialog {
   hide = true;
   hide1 = true;
 
@@ -37,25 +20,27 @@ export class RegDialog {
 
   form;
 
-  constructor(public dialogRef: MatDialogRef<RegDialog>,
-              @Inject(MAT_DIALOG_DATA) public data: any,
-              fb: FormBuilder,
-              private userService: UserService) {
-    this.form = fb.group({
-      username: ['',
-        [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.pattern('^[a-zA-Z0-9]+$')
-        ],
-        this.checkDB.bind(this, 'username')
-      ],
-      email: ['',
-        [
-          Validators.required,
-          Validators.email
-        ],
-        this.checkDB.bind(this, 'email')],
+  config = [
+    {
+      type: 'usernameInput',
+      name: 'username',
+      placeholder: 'Username',
+      check: 'reg'
+    },
+    {
+      type: 'emailInput',
+      name: 'email',
+      placeholder: 'Email'
+    }
+  ];
+
+  constructor(private userService: UserService,
+              private fb: FormBuilder) {
+    this.form = this.createGroup();
+  }
+
+  createGroup() {
+    const group = this.fb.group({
       password: ['',
         [
           Validators.required,
@@ -66,19 +51,18 @@ export class RegDialog {
       ],
       duplicate: ['', []]
     }, {validator: this.checkIfMatchingPasswords('password', 'duplicate')});
+
+    this.config.forEach(control => {
+      group.addControl(control.name, this.fb.control(''));
+    });
+
+    return group;
   }
 
   public checkCheckbox(c: AbstractControl) {
     if (c.value == false) {
       return 'false';
     } else return true;
-  }
-
-  checkDB(type, control: AbstractControl) {
-    return this.userService.checkDB(control.value, type)
-      .map((res) => {
-        return res['success'] ? null : {fieldTaken: true};
-      });
   }
 
   checkIfMatchingPasswords(passwordKey: string, passwordConfirmationKey: string) {
@@ -98,11 +82,8 @@ export class RegDialog {
     return ValidationErrors.getErrorMessage(control, this.form);
   }
 
-  closeReg(): void {
-    this.dialogRef.close();
-  }
-
   onSubmit(form) {
     this.userService.regUser(form.value);
   }
+
 }
