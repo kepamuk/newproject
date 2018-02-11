@@ -7,7 +7,7 @@ import {TestingComponent} from './dynamic-fields/testing/testing.component';
 
 const routes: Route[] = [
   {
-    path: 'auth', component: UserComponent,
+    path: 'user', component: UserComponent,
     children: [
       {
         path: 'registration',

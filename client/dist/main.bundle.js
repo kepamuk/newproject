@@ -993,7 +993,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 var routes = [
     {
-        path: 'auth', component: __WEBPACK_IMPORTED_MODULE_3__user_component__["a" /* UserComponent */],
+        path: 'user', component: __WEBPACK_IMPORTED_MODULE_3__user_component__["a" /* UserComponent */],
         children: [
             {
                 path: 'registration',
