@@ -23,7 +23,7 @@ import { TestingRComponent } from './testing-r/testing-r.component';
     BrowserAnimationsModule,
     AppRoutingModule
   ],
-  providers: [{provide: LocationStrategy, useClass: PathLocationStrategy}],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
