@@ -8,7 +8,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from './app-routing.module';
 import {ToolbarComponent} from './toolbar/toolbar.component';
 import {HashLocationStrategy, LocationStrategy, PathLocationStrategy} from '@angular/common';
-import { TestingRComponent } from './testing-r/testing-r.component';
+import {TestingRComponent} from './testing-r/testing-r.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { TestingRComponent } from './testing-r/testing-r.component';
     BrowserAnimationsModule,
     AppRoutingModule
   ],
-  providers: [{provide: LocationStrategy, useClass: PathLocationStrategy}],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
