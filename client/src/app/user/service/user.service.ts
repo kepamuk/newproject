@@ -4,7 +4,6 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 @Injectable()
 export class UserService {
 
-  // private url = 'http://localhost:3000/';
   private url = 'http://kepamu01.beget.tech/';
 
   constructor(private http: HttpClient) {
