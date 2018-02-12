@@ -170,7 +170,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_6__app_routing_module__["a" /* AppRoutingModule */]
             ],
-            providers: [{ provide: __WEBPACK_IMPORTED_MODULE_8__angular_common__["g" /* LocationStrategy */], useClass: __WEBPACK_IMPORTED_MODULE_8__angular_common__["h" /* PathLocationStrategy */] }],
+            providers: [{ provide: __WEBPACK_IMPORTED_MODULE_8__angular_common__["g" /* LocationStrategy */], useClass: __WEBPACK_IMPORTED_MODULE_8__angular_common__["d" /* HashLocationStrategy */] }],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_2__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
@@ -977,10 +977,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var UserService = /** @class */ (function () {
-    // private url = 'http://kepamu01.beget.tech/';
     function UserService(http) {
         this.http = http;
-        this.url = 'http://localhost:3000/';
+        // private url = 'http://localhost:3000/';
+        this.url = 'http://kepamu01.beget.tech/';
     }
     UserService.prototype.regUser = function (arg) {
         console.log(arg);
