@@ -8,7 +8,6 @@ module.exports = (router) => {
         console.log('Error getting the posts');
       } else {
         res.json(posts);
-        console.log(posts);
       }
     })
   });
