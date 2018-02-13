@@ -20,6 +20,8 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.use('/auth', user);
+app.use('/api/auth', user);
+
+
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'));

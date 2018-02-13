@@ -983,14 +983,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var UserService = /** @class */ (function () {
+    // private url = 'http://kepamu01.beget.tech/';
     function UserService(http) {
         this.http = http;
-        // private url = 'http://localhost:3000/';
-        this.url = 'http://kepamu01.beget.tech/';
+        this.url = 'http://localhost:3000/';
     }
     UserService.prototype.regUser = function (arg) {
         console.log(arg);
-        this.http.post(this.url + "auth/registration", arg).subscribe(function (data) {
+        this.http.post(this.url + "api/auth/registration", arg).subscribe(function (data) {
             console.log(data);
         });
     };
@@ -998,10 +998,10 @@ var UserService = /** @class */ (function () {
         var params = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpParams */]();
         params = params.append('value', value);
         params = params.append('type', type);
-        return this.http.get(this.url + "auth/checkField", { params: params });
+        return this.http.get(this.url + "api/auth/checkField", { params: params });
     };
     UserService.prototype.getAll = function () {
-        this.http.get(this.url + "auth/getall")
+        this.http.get(this.url + "api/auth/getall")
             .subscribe(function (data) {
             console.log(data);
         });
