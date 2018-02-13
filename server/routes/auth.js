@@ -2,6 +2,17 @@ const User = require('../models/user');
 
 module.exports = (router) => {
 
+  router.get('/getall', (req, res) => {
+    User.find({}, function(err, posts){
+      if (err) {
+        console.log('Error getting the posts');
+      } else {
+        res.json(posts);
+        console.log(posts);
+      }
+    })
+  });
+
   router.get('/hello', (req, res) => {
     res.end('Hello World!');
   });

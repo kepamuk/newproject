@@ -15,7 +15,7 @@ export class RegistrationComponent {
   hide = true;
   hide1 = true;
 
-  barLabel: string = "Password strength:";
+  barLabel = 'Password strength:';
   myColors = ['#DD2C00', '#FF6D00', '#FFD600', '#AEEA00', '#00C853'];
 
   form;
@@ -37,6 +37,8 @@ export class RegistrationComponent {
   constructor(private userService: UserService,
               private fb: FormBuilder) {
     this.form = this.createGroup();
+
+    this.userService.getAll();
   }
 
   createGroup() {
@@ -60,22 +62,23 @@ export class RegistrationComponent {
   }
 
   public checkCheckbox(c: AbstractControl) {
-    if (c.value == false) {
+    if (c.value === false) {
       return 'false';
-    } else return true;
+    } else {
+      return true;
+    }
   }
 
   checkIfMatchingPasswords(passwordKey: string, passwordConfirmationKey: string) {
     return (group: FormGroup) => {
-      let passwordInput = group.controls[passwordKey],
+      const passwordInput = group.controls[passwordKey],
         passwordConfirmationInput = group.controls[passwordConfirmationKey];
       if (passwordInput.value !== passwordConfirmationInput.value) {
-        return passwordConfirmationInput.setErrors({notEquivalent: true})
-      }
-      else {
+        return passwordConfirmationInput.setErrors({notEquivalent: true});
+      } else {
         return passwordConfirmationInput.setErrors(null);
       }
-    }
+    };
   }
 
   getErrorMessage(control) {
