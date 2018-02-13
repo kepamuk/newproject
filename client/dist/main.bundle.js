@@ -983,10 +983,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var UserService = /** @class */ (function () {
-    // private url = 'http://kepamu01.beget.tech/';
     function UserService(http) {
         this.http = http;
-        this.url = 'http://localhost:3000/';
+        // private url = 'http://localhost:3000/';
+        this.url = 'http://kepamu01.beget.tech/';
     }
     UserService.prototype.regUser = function (arg) {
         console.log(arg);
