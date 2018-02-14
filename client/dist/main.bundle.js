@@ -983,11 +983,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var UserService = /** @class */ (function () {
-    // private url = 'http://localhost:8080/';
-    // private url = 'http://kepamu01.beget.tech/';
     function UserService(http) {
         this.http = http;
-        this.url = '';
+        // private url = '';
+        // private url = 'http://localhost:8080/';
+        this.url = 'http://kepamu01.beget.tech/';
     }
     UserService.prototype.regUser = function (arg) {
         console.log(arg);

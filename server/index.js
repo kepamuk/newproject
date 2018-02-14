@@ -19,6 +19,12 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+app.use(express.static('../client/dist/'));
+
 app.use('/api/auth', user);
+
+app.get('*', (req,res) => {
+  res.sendFile(path.join('../client/dist/index.html'));
+});
 
 app.listen(port, () => console.log(`Example app listening on port ${[port]}!`));
